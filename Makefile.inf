@@ -1,10 +1,10 @@
 SECTION="NetPing modules"
 CATEGORY="Base"
-TITLE="EPIC OWRT-PLIB-Lark-parser"
+TITLE="EPIC OWRT-PLIB-lark-parser"
 
-PKG_NAME="OWRT-PLIB-Lark-parser"
-PKG_VERSION="Epic2.DKSO708.1.1"
-PKG_RELEASE=1
+PKG_NAME="OWRT-PLIB-lark-parser"
+PKG_VERSION="0.11.3-1"
+PKG_RELEASE=2
 
 MODULES_DIR=/usr/lib/python3.7/site-packages/
 MODULES=lark  lark_parser-0.11.3-py3.7.egg-info  lark-stubs  pyjsparser  pyjsparser-2.7.1.dist-info  six-1.16.0.dist-info  six.py
