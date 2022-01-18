@@ -1,21 +1,38 @@
 SECTION="NetPing modules"
 CATEGORY="Base"
-TITLE="EPIC OWRT-PLIB-lark-parser"
+TITLE="EPIC OWRT_PLIB_Lark_parser"
 
-PKG_NAME="OWRT-PLIB-lark-parser"
-PKG_VERSION="0.11.3-1"
-PKG_RELEASE=2
+PKG_NAME="OWRT_PLIB_Lark_parser"
+PKG_VERSION=0.11.3
+PKG_RELEASE=1
+PKG_DEPENDS=
 
-MODULES_DIR=/usr/lib/python3.7/site-packages/
-MODULES=lark  lark_parser-0.11.3-py3.7.egg-info  lark-stubs  pyjsparser  pyjsparser-2.7.1.dist-info  six-1.16.0.dist-info  six.py
+MODULE_NAME = owrt_plib_lark_parser
+MODULE_FILES = lark/ lark-stubs/ pyjsparser/ six.py
+MODULE_FILES_DIR ?= /usr/lib/python3.7/site-packages/
 
-.PHONY: all install
+INSTALL_DIR=
 
-all: install
+all: configure build install
+
+configure:
+        @echo "Nothing to do"
+
+build:
+        @echo "Nothing to do"
 
 install:
-	mkdir -p $(MODULE_FILES_DIR)
-	for f in $(MODULES); do cp -r $${f} $(MODULES_DIR); done
+ifeq ($(origin INSTALL_DIR),command line)
+        mkdir -p $(INSTALL_DIR)${MODULE_FILES_DIR}
+else
+        mkdir -p $(INSTALL_DIR)${MODULE_FILES_DIR}
+endif
+        for f in $(MODULE_FILES); do cp -r $${f} $(INSTALL_DIR)$(MODULE_FILES_DIR); done
 
 clean:
-	for f in $(MODULES); do rm -f $(MODULES_DIR)$${f}; done
+ifeq ($(origin INSTALL_DIR),command line)
+        rm -rf $(INSTALL_DIR)
+else
+        for f in $(MODULE_FILES); do rm -rf $(INSTALL_DIR)$(MODULE_FILES_DIR)$${f}; done
+        $(if $(strip $(INSTALL_DIR)),rm -r $(INSTALL_DIR),)
+endif
