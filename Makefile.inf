@@ -1,8 +1,8 @@
 SECTION="NetPing modules"
 CATEGORY="Base"
-TITLE="EPIC OWRT_PLIB_Lark_parser"
+TITLE="EPIC OWRT-PLIB-Lark-parser"
 
-PKG_NAME="OWRT_PLIB_Lark_parser"
+PKG_NAME="OWRT-PLIB-Lark-parser"
 PKG_VERSION=0.11.3
 PKG_RELEASE=1
 PKG_DEPENDS=
