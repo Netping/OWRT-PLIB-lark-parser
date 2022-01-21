@@ -16,23 +16,23 @@ INSTALL_DIR=
 all: configure build install
 
 configure:
-        @echo "Nothing to do"
+	@echo "Nothing to do"
 
 build:
-        @echo "Nothing to do"
+	@echo "Nothing to do"
 
 install:
 ifeq ($(origin INSTALL_DIR),command line)
-        mkdir -p $(INSTALL_DIR)${MODULE_FILES_DIR}
+	mkdir -p $(INSTALL_DIR)${MODULE_FILES_DIR}
 else
-        mkdir -p $(INSTALL_DIR)${MODULE_FILES_DIR}
+	mkdir -p $(INSTALL_DIR)${MODULE_FILES_DIR}
 endif
-        for f in $(MODULE_FILES); do cp -r $${f} $(INSTALL_DIR)$(MODULE_FILES_DIR); done
+	for f in $(MODULE_FILES); do cp -r $${f} $(INSTALL_DIR)$(MODULE_FILES_DIR); done
 
 clean:
 ifeq ($(origin INSTALL_DIR),command line)
-        rm -rf $(INSTALL_DIR)
+	rm -rf $(INSTALL_DIR)
 else
-        for f in $(MODULE_FILES); do rm -rf $(INSTALL_DIR)$(MODULE_FILES_DIR)$${f}; done
-        $(if $(strip $(INSTALL_DIR)),rm -r $(INSTALL_DIR),)
+	for f in $(MODULE_FILES); do rm -rf $(INSTALL_DIR)$(MODULE_FILES_DIR)$${f}; done
+	$(if $(strip $(INSTALL_DIR)),rm -r $(INSTALL_DIR),)
 endif
